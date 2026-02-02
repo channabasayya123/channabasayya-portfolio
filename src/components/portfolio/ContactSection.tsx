@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Mail, Phone, MapPin, Linkedin, Github, Download } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Github, Download, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const contactInfo = [
@@ -38,6 +38,25 @@ const socialLinks = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 },
+  },
+};
+
 const ContactSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -51,14 +70,29 @@ const ContactSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <motion.h2
+            className="text-3xl md:text-4xl font-bold text-foreground mb-4"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.5 }}
+          >
             Get In <span className="text-gradient">Touch</span>
-          </h2>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.div
+            className="w-20 h-1 bg-primary mx-auto rounded-full"
+            initial={{ width: 0 }}
+            animate={isInView ? { width: 80 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          />
+          <motion.p
+            className="mt-4 text-muted-foreground max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.4 }}
+          >
             I'm currently looking for internship and placement opportunities. Feel
             free to reach out!
-          </p>
+          </motion.p>
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
@@ -74,53 +108,78 @@ const ContactSection = () => {
                 Contact Information
               </h3>
 
-              {contactInfo.map((info, index) => (
-                <motion.div
-                  key={info.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                  className="flex items-center gap-4"
-                >
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <info.icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground">{info.label}</p>
-                    {info.href ? (
-                      <a
-                        href={info.href}
-                        className="text-foreground hover:text-primary transition-colors font-medium"
-                      >
-                        {info.value}
-                      </a>
-                    ) : (
-                      <p className="text-foreground font-medium">{info.value}</p>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
+              <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                className="space-y-6"
+              >
+                {contactInfo.map((info, index) => (
+                  <motion.div
+                    key={info.label}
+                    variants={itemVariants}
+                    whileHover={{ x: 10, scale: 1.02 }}
+                    className="flex items-center gap-4 group"
+                  >
+                    <motion.div
+                      className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0"
+                      whileHover={{ rotate: 360, scale: 1.1 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <info.icon className="w-5 h-5 text-primary" />
+                    </motion.div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">{info.label}</p>
+                      {info.href ? (
+                        <motion.a
+                          href={info.href}
+                          className="text-foreground hover:text-primary transition-colors font-medium"
+                          whileHover={{ x: 3 }}
+                        >
+                          {info.value}
+                        </motion.a>
+                      ) : (
+                        <p className="text-foreground font-medium">{info.value}</p>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
 
               {/* Social Links */}
-              <div className="pt-6">
+              <motion.div
+                className="pt-6"
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ delay: 0.6 }}
+              >
                 <p className="text-sm text-muted-foreground mb-4">
                   Connect with me
                 </p>
                 <div className="flex gap-3">
-                  {socialLinks.map((social) => (
-                    <a
+                  {socialLinks.map((social, index) => (
+                    <motion.a
                       key={social.label}
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-12 h-12 rounded-lg bg-card card-shadow flex items-center justify-center text-muted-foreground hover:text-primary hover:card-shadow-hover transition-all"
                       aria-label={social.label}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                      transition={{ delay: 0.7 + index * 0.1, type: "spring" }}
+                      whileHover={{
+                        scale: 1.2,
+                        rotate: [0, -10, 10, 0],
+                        transition: { duration: 0.3 },
+                      }}
+                      whileTap={{ scale: 0.9 }}
                     >
                       <social.icon size={20} />
-                    </a>
+                    </motion.a>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
 
             {/* Resume Download Card */}
@@ -128,27 +187,75 @@ const ContactSection = () => {
               initial={{ opacity: 0, x: 30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="p-8 bg-gradient-to-br from-primary to-primary/80 rounded-xl text-primary-foreground"
+              whileHover={{ scale: 1.02, y: -5 }}
+              className="p-8 bg-gradient-to-br from-primary to-primary/80 rounded-xl text-primary-foreground relative overflow-hidden"
             >
-              <h3 className="text-2xl font-bold mb-4">Download My Resume</h3>
-              <p className="mb-6 opacity-90">
-                Get a comprehensive overview of my skills, education, and
-                experience in a single document.
-              </p>
-              <Button
-                size="lg"
-                variant="secondary"
-                className="gap-2 w-full sm:w-auto"
-                onClick={() =>
-                  window.open(
-                    "https://drive.google.com/your-resume-link",
-                    "_blank"
-                  )
-                }
+              {/* Animated background pattern */}
+              <motion.div
+                className="absolute inset-0 opacity-10"
+                animate={{
+                  backgroundPosition: ["0% 0%", "100% 100%"],
+                }}
+                transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
+                style={{
+                  backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)",
+                  backgroundSize: "20px 20px",
+                }}
+              />
+
+              {/* Floating icon */}
+              <motion.div
+                className="absolute top-4 right-4 opacity-20"
+                animate={{
+                  y: [0, -10, 0],
+                  rotate: [0, 10, 0],
+                }}
+                transition={{ duration: 4, repeat: Infinity }}
               >
-                <Download size={18} />
-                Download Resume (PDF)
-              </Button>
+                <Send size={60} />
+              </motion.div>
+
+              <div className="relative z-10">
+                <motion.h3
+                  className="text-2xl font-bold mb-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.5 }}
+                >
+                  Download My Resume
+                </motion.h3>
+                <motion.p
+                  className="mb-6 opacity-90"
+                  initial={{ opacity: 0 }}
+                  animate={isInView ? { opacity: 0.9 } : {}}
+                  transition={{ delay: 0.6 }}
+                >
+                  Get a comprehensive overview of my skills, education, and
+                  experience in a single document.
+                </motion.p>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button
+                    size="lg"
+                    variant="secondary"
+                    className="gap-2 w-full sm:w-auto group"
+                    onClick={() =>
+                      window.open(
+                        "https://drive.google.com/your-resume-link",
+                        "_blank"
+                      )
+                    }
+                  >
+                    <Download
+                      size={18}
+                      className="group-hover:animate-bounce"
+                    />
+                    Download Resume (PDF)
+                  </Button>
+                </motion.div>
+              </div>
             </motion.div>
           </div>
         </div>
