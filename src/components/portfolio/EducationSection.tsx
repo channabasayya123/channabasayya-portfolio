@@ -1,0 +1,114 @@
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import { GraduationCap, Calendar, MapPin } from "lucide-react";
+
+const educationData = [
+  {
+    degree: "Bachelor of Computer Applications (BCA)",
+    institution: "KLE's GH BCA College, Haveri",
+    university: "Haveri University",
+    year: "2023 – 2026 (Expected)",
+    isCurrent: true,
+  },
+  {
+    degree: "Pre-University (PUC)",
+    institution: "KLE GH PU College, Haveri",
+    year: "2023",
+    isCurrent: false,
+  },
+  {
+    degree: "Secondary School (SSLC)",
+    institution: "Vidya Bharati Education Society, Savanur",
+    year: "2021",
+    isCurrent: false,
+  },
+];
+
+const EducationSection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <section id="education" className="section-padding">
+      <div className="container mx-auto px-4 md:px-6" ref={ref}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            My <span className="text-gradient">Education</span>
+          </h2>
+          <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
+        </motion.div>
+
+        <div className="max-w-3xl mx-auto">
+          <div className="relative">
+            {/* Timeline Line */}
+            <div className="absolute left-4 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-border" />
+
+            {educationData.map((edu, index) => (
+              <motion.div
+                key={edu.degree}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                className={`relative mb-8 md:mb-12 ${
+                  index % 2 === 0 ? "md:pr-1/2 md:text-right" : "md:pl-1/2 md:ml-auto"
+                }`}
+              >
+                <div
+                  className={`ml-12 md:ml-0 ${
+                    index % 2 === 0 ? "md:mr-8" : "md:ml-8"
+                  }`}
+                >
+                  <div className="p-6 bg-card rounded-xl card-shadow hover:card-shadow-hover transition-all">
+                    {edu.isCurrent && (
+                      <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full mb-3">
+                        Current
+                      </span>
+                    )}
+                    <div className="flex items-start gap-3 mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <GraduationCap className="w-5 h-5 text-primary" />
+                      </div>
+                      <div className="text-left">
+                        <h3 className="font-semibold text-foreground">
+                          {edu.degree}
+                        </h3>
+                        <p className="text-muted-foreground text-sm flex items-center gap-1 mt-1">
+                          <MapPin size={14} />
+                          {edu.institution}
+                        </p>
+                        {edu.university && (
+                          <p className="text-muted-foreground text-sm">
+                            {edu.university}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                    <p className="text-sm text-muted-foreground flex items-center gap-1 justify-start">
+                      <Calendar size={14} />
+                      {edu.year}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Timeline Dot */}
+                <div
+                  className={`absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3 h-3 rounded-full ${
+                    edu.isCurrent ? "bg-primary" : "bg-muted-foreground"
+                  } ring-4 ring-background`}
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default EducationSection;
