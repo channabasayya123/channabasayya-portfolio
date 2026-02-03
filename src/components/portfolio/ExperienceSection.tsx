@@ -15,11 +15,6 @@ const experience = {
   ],
 };
 
-const certifications = [
-  "Full Stack Development",
-  "Python Machine Learning",
-  "Master Data Analysis with Python – Udemy",
-];
 
 const achievements = [
   {
@@ -157,54 +152,8 @@ const ExperienceSection = () => {
             </div>
           </motion.div>
 
-          {/* Certifications & Achievements */}
+          {/* Achievements & Extra-Curricular */}
           <div className="space-y-6">
-            {/* Certifications */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              whileHover={{ scale: 1.02 }}
-              className="p-6 bg-card rounded-xl card-shadow hover:card-shadow-hover transition-all"
-            >
-              <motion.div
-                className="flex items-center gap-3 mb-4"
-                whileHover={{ x: 5 }}
-              >
-                <motion.div
-                  className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center"
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                >
-                  <Award className="w-5 h-5 text-primary" />
-                </motion.div>
-                <h3 className="text-xl font-semibold text-foreground">
-                  Certifications
-                </h3>
-              </motion.div>
-              <motion.ul
-                className="space-y-2"
-                variants={containerVariants}
-                initial="hidden"
-                animate={isInView ? "visible" : "hidden"}
-              >
-                {certifications.map((cert, index) => (
-                  <motion.li
-                    key={cert}
-                    variants={itemVariants}
-                    className="text-muted-foreground flex items-center gap-2"
-                    whileHover={{ x: 5, color: "hsl(var(--primary))" }}
-                  >
-                    <motion.span
-                      className="w-1.5 h-1.5 rounded-full bg-primary"
-                      animate={{ scale: [1, 1.5, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
-                    />
-                    {cert}
-                  </motion.li>
-                ))}
-              </motion.ul>
-            </motion.div>
 
             {/* Achievements */}
             <motion.div
