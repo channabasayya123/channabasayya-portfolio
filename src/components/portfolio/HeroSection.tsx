@@ -164,14 +164,15 @@ const HeroSection = () => {
               animate="animate"
             >
               <motion.div
-                className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center p-2"
+                className="w-72 h-72 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center p-2"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <motion.img
                   src={profilePhoto}
                   alt="Channabasayya Hiremath"
-                  className="w-56 h-56 md:w-72 md:h-72 rounded-full object-cover object-top border-4 border-primary/20 shadow-xl"
+                  className="w-64 h-64 md:w-88 md:h-88 rounded-full object-cover object-[center_15%] border-4 border-primary/30 shadow-2xl"
+                  style={{ width: "90%", height: "90%" }}
                   whileHover={{ rotate: [0, -2, 2, 0] }}
                   transition={{ duration: 0.5 }}
                 />
