@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowDown, Download, Mail, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Easing } from "framer-motion";
+import profilePhoto from "@/assets/profile-photo.jpg";
 
 const easeInOut: Easing = "easeInOut";
 
@@ -163,17 +164,17 @@ const HeroSection = () => {
               animate="animate"
             >
               <motion.div
-                className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center"
+                className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center p-2"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <motion.div
-                  className="w-56 h-56 md:w-72 md:h-72 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center text-primary-foreground text-6xl md:text-7xl font-bold"
-                  whileHover={{ rotate: [0, -5, 5, 0] }}
+                <motion.img
+                  src={profilePhoto}
+                  alt="Channabasayya Hiremath"
+                  className="w-56 h-56 md:w-72 md:h-72 rounded-full object-cover object-top border-4 border-primary/20 shadow-xl"
+                  whileHover={{ rotate: [0, -2, 2, 0] }}
                   transition={{ duration: 0.5 }}
-                >
-                  CH
-                </motion.div>
+                />
               </motion.div>
               {/* Decorative Elements with animations */}
               <motion.div
