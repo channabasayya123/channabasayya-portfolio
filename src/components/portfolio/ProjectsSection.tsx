@@ -13,7 +13,7 @@ const projects = [
       "Developed a responsive front-end project on CodePen using HTML, CSS, and JavaScript, focusing on user interface design, interactivity, and clean coding practices.",
     technologies: ["HTML", "CSS", "JavaScript"],
     features: ["Responsive design", "Interactive UI", "Clean code practices"],
-    github: "#", // Replace with your CodePen source code link
+    github: "https://github.com/channabasayya123/CODE-EDITOR-CODEPENBD",
     demo: null,
   },
   {
@@ -22,7 +22,7 @@ const projects = [
       "Developed a human pose detection application using computer vision and deep learning techniques to identify key body joints in real time.",
     technologies: ["Python", "Computer Vision", "Deep Learning"],
     features: ["Real-time detection", "Key body joint identification", "Deep learning models"],
-    github: "#", // Replace with your source code link
+    github: "https://github.com/channabasayya123/Human-Pose-Detection-System",
     demo: null,
   },
   {
@@ -31,7 +31,7 @@ const projects = [
       "Built an AI/ML application that generates images from user text prompts using deep learning models. Implemented prompt processing and model integration for image generation.",
     technologies: ["Python", "AI/ML", "Deep Learning"],
     features: ["Text prompt processing", "Image generation", "Model integration"],
-    github: "#", // Replace with your source code link
+    github: "https://github.com/channabasayya123/Text-to-image-genarator",
     demo: null,
   },
   {
@@ -40,7 +40,7 @@ const projects = [
       "Developed a To-Do List web application using HTML, CSS, and JavaScript for task management.",
     technologies: ["HTML", "CSS", "JavaScript"],
     features: ["Add tasks", "Delete tasks", "Task management"],
-    github: "#", // Replace with your source code link
+    github: "https://github.com/channabasayya123/Todo-List",
     demo: null,
   },
 ];
