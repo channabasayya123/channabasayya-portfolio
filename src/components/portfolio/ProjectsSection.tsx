@@ -8,21 +8,39 @@ const easeOut: Easing = "easeOut";
 
 const projects = [
   {
-    title: "Personal Portfolio Website",
+    title: "CodePen Front-End Project",
     description:
-      "Designed and developed a responsive portfolio website to showcase skills, projects, and contact information.",
-    technologies: ["HTML", "CSS"],
-    features: ["Responsive layout", "Clean UI", "Smooth scrolling"],
-    github: "https://github.com/your-username/portfolio",
+      "Developed a responsive front-end project on CodePen using HTML, CSS, and JavaScript, focusing on user interface design, interactivity, and clean coding practices.",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    features: ["Responsive design", "Interactive UI", "Clean code practices"],
+    github: "#", // Replace with your CodePen source code link
     demo: null,
   },
   {
-    title: "Todo List Web Application",
+    title: "Human Pose Detection System",
     description:
-      "Built an interactive todo list application with task management features.",
+      "Developed a human pose detection application using computer vision and deep learning techniques to identify key body joints in real time.",
+    technologies: ["Python", "Computer Vision", "Deep Learning"],
+    features: ["Real-time detection", "Key body joint identification", "Deep learning models"],
+    github: "#", // Replace with your source code link
+    demo: null,
+  },
+  {
+    title: "Text-to-Image Generator (AI/ML)",
+    description:
+      "Built an AI/ML application that generates images from user text prompts using deep learning models. Implemented prompt processing and model integration for image generation.",
+    technologies: ["Python", "AI/ML", "Deep Learning"],
+    features: ["Text prompt processing", "Image generation", "Model integration"],
+    github: "#", // Replace with your source code link
+    demo: null,
+  },
+  {
+    title: "Todo List",
+    description:
+      "Developed a To-Do List web application using HTML, CSS, and JavaScript for task management.",
     technologies: ["HTML", "CSS", "JavaScript"],
-    features: ["Add tasks", "Delete tasks", "Manage tasks dynamically"],
-    github: "https://github.com/your-username/todo-app",
+    features: ["Add tasks", "Delete tasks", "Task management"],
+    github: "#", // Replace with your source code link
     demo: null,
   },
 ];
