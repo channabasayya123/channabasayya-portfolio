@@ -243,7 +243,7 @@ const ContactSection = () => {
                     className="gap-2 w-full sm:w-auto group"
                     onClick={() =>
                       window.open(
-                        "https://drive.google.com/your-resume-link",
+                        "https://drive.google.com/file/d/1xISZ4y4c4iRrbLRUyDsLmEUVSaCKdiMh/view?usp=drivesdk",
                         "_blank"
                       )
                     }
