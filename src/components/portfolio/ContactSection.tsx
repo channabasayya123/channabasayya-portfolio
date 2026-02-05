@@ -133,6 +133,8 @@ const ContactSection = () => {
                       {info.href ? (
                         <motion.a
                           href={info.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="text-foreground hover:text-primary transition-colors font-medium"
                           whileHover={{ x: 3 }}
                         >
