@@ -39,13 +39,13 @@ const HeroSection = () => {
     >
       {/* Animated Background Elements */}
       <motion.div
-        className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl"
+        className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"
         variants={pulseAnimation}
         initial="initial"
         animate="animate"
       />
       <motion.div
-        className="absolute bottom-20 right-10 w-96 h-96 bg-primary/20 rounded-full blur-3xl"
+        className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl"
         variants={pulseAnimation}
         initial="initial"
         animate="animate"
@@ -74,7 +74,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4"
             >
               Channabasayya{" "}
               <motion.span
@@ -90,7 +90,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
-              className="text-lg md:text-xl text-blue-200 mb-6"
+              className="text-lg md:text-xl text-muted-foreground mb-6"
             >
               Final Year BCA Student | Web Developer Fresher
             </motion.p>
@@ -98,7 +98,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
-              className="text-blue-100/80 max-w-lg mb-8 leading-relaxed"
+              className="text-muted-foreground max-w-lg mb-8 leading-relaxed"
             >
               A motivated BCA final-year student skilled in C, Java, Python, and
               modern web technologies. Passionate about problem-solving and
@@ -164,7 +164,7 @@ const HeroSection = () => {
               animate="animate"
             >
               <motion.div
-                className="w-72 h-72 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-primary/40 to-primary/10 flex items-center justify-center p-2"
+                className="w-72 h-72 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center p-2"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
@@ -224,7 +224,7 @@ const HeroSection = () => {
         >
           <motion.a
             href="#about"
-            className="flex flex-col items-center gap-2 text-blue-200 hover:text-primary transition-colors"
+            className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
             whileHover={{ scale: 1.1 }}
           >
             <motion.span
